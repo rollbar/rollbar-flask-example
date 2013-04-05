@@ -1,4 +1,3 @@
-rollbar-flask-example
-=====================
+# rollbar-flask-example
 
-Example using Rollbar with Flask
+A simple example [Flask](http://flask.pocoo.org/) app, showing how to use [Rollbar](https://rollbar.com) (the error tracking service) with Flask.
