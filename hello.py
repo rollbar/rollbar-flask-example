@@ -9,19 +9,22 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 
-# init rollbar module
-rollbar.init(
-    # access token for the demo app: https://rollbar.com/demo
-    'fc316ac1f7404dc28af26d5baed1416c', 
-    # environment name
-    'flasktest',  
-    # server root directory, makes tracebacks prettier
-    root=os.path.dirname(os.path.realpath(__file__)),  
-    # flask already sets up logging
-    allow_logging_basic_config=False)
 
-# send exceptions from `app` to rollbar, using flask's signal system.
-got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+@app.before_first_request
+def init_rollbar():
+    """init rollbar module"""
+    rollbar.init(
+        # access token for the demo app: https://rollbar.com/demo
+        'fc316ac1f7404dc28af26d5baed1416c',
+        # environment name
+        'flasktest',
+        # server root directory, makes tracebacks prettier
+        root=os.path.dirname(os.path.realpath(__file__)),
+        # flask already sets up logging
+        allow_logging_basic_config=False)
+
+    # send exceptions from `app` to rollbar, using flask's signal system.
+    got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
 
 ## To set up Person Tracking, implement a custom request_class that has a `rollbar_person` property.
