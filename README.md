@@ -4,9 +4,11 @@ A simple example [Flask](http://flask.pocoo.org/) app, showing how to use [Rollb
 
 ## How to run
 
-Requires Python 2.6+ and pip. In a virtualenv:
+This example requires Python 2.6+, pip, and virtualenv.
 
 ```
+virtualenv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 python hello.py
 ```
