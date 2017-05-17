@@ -1,4 +1,4 @@
 Flask==0.10.1
 blinker==1.4
 gunicorn==19.6
-rollbar==0.12.1
+rollbar==0.13.11
