@@ -4,7 +4,7 @@ A simple example [Flask](http://flask.pocoo.org/) app, showing how to use [Rollb
 
 ## How to run
 
-This example requires Python 2.6+, pip, and virtualenv.
+This example requires Python 3 (or 2.6+), pip, and virtualenv.
 
 ```
 virtualenv .venv
