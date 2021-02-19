@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from flask import Flask
 app = Flask(__name__)
 
@@ -45,7 +47,7 @@ app.request_class = CustomRequest
 
 @app.route('/')
 def hello():
-    print "in hello"
+    print("in hello")
     x = None
     x[5]
     return "Hello World!"
