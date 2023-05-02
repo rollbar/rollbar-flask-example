@@ -12,9 +12,7 @@ import rollbar.contrib.flask
 from flask import got_request_exception
 
 
-@app.before_first_request
-def init_rollbar():
-    """init rollbar module"""
+with app.app_context():
     rollbar.init(
         # access token for the demo app: https://rollbar.com/demo
         'fc316ac1f7404dc28af26d5baed1416c',
