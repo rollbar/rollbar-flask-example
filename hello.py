@@ -11,11 +11,24 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 
+## XXX hack to make request data work with pyrollbar <= 0.16.3
+def _get_flask_request():
+    print("Getting flask request")
+    from flask import request
+    print("request:", request)
+    return request
+rollbar._get_flask_request = _get_flask_request
+
+def _build_request_data(request):
+    return rollbar._build_werkzeug_request_data(request)
+rollbar._build_request_data = _build_request_data
+## XXX end hack
+
 
 with app.app_context():
     rollbar.init(
-        # access token for the demo app: https://rollbar.com/demo
-        'fc316ac1f7404dc28af26d5baed1416c',
+        # use a post_server_item access token for your Rollbar project
+        'ACCESS_TOKEN',
         # environment name
         'flasktest',
         # server root directory, makes tracebacks prettier
